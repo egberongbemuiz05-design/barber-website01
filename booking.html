@@ -48,9 +48,9 @@
        <a href="index.html" class="btn">Back to Home</a>
     </section>
 
- <script>
+    <script>
         function handleSubmit(event)  {
-            event.preventDefault();
+            // event.preventDefault();
 
             let selectDate = document.querySelector("input[name='date']").value;
 
@@ -62,9 +62,11 @@
             }
 
             alert("Thanks for booking with us! we will contact you shortly");
-
-            event.target.submit();
+            return true;
+            // event.target.submit();
         }
      </script>      
+
+     
 </body>
 </html>
