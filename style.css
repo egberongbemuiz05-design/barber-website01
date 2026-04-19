@@ -1,0 +1,176 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: white;
+    text-align: center;
+}
+
+/* HERO WITH SLIDING IMAGES */
+.hero {
+    position: relative;
+    padding: 100px 20px;
+    height: 50vh;
+    color: white;
+    
+    background-size: cover;
+    background-position: center;
+
+    animation: slideBg 20s infinite;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+}
+
+.hero * {
+    position: relative;
+    z-index: 1;
+}
+
+/* HERO TEXT */
+.hero h1 {
+    font-size: 3em;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.hero p {
+    animation: fadeIn 3s ease-in-out;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: gold;
+    color: black;
+    text-decoration: none;
+    animation: fadeIn 4s ease-in-out;
+}
+
+/* SLIDING BACKGROUND */
+@keyframes slideBg {
+    0% {background-image: url('images/barbe1.jpg');}
+    25% {background-image: url('images/barbe2.jpg');}
+    50% {background-image: url('images/barbe3.jpg');}
+    75% {background-image: url('images/barbe4.jpg');}
+    100% {background-image: url('images/barbe6.jpg');}
+}
+
+/* SERVICES */
+.services {
+    padding: 50px 20px;
+}
+
+.service-box {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    background: #222;
+    padding: 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.1);
+    background: gold;
+    color: black;
+}
+
+/* BOOKING */
+.booking{
+    padding: 50px 20px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    margin: auto;
+    gap: 10px;
+}
+
+input, select {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px;
+    background: gold;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: white;
+}
+
+/* SERVICE PAGES */
+.service-page{
+    padding: 100px 20px;
+    max-width: 600px;
+    margin: auto;
+    animation: fadeIn 1.5s ease-in-out;
+    }
+
+.service-page h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}    
+
+.service-page h3 {
+    color: gold;
+    margin-bottom: 20px;
+}
+
+/* ABOUT & CONTACT */
+.about, .contact {
+    padding: 40px 20px;
+}
+
+/* WHATSAPP */
+.whatsapp{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: green;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 50px;
+    text-decoration: none;
+}
+
+/* FADE ANIMATION */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+input[type="date"],
+input[type="time"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+
+        
