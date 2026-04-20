@@ -5,22 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Appointment</title>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Hide form at first */
+        #bookingForm {
+            display: none;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
 
-      <section class="service-page">
+<section class="service-page">
 
-        <h1>Book Appointment</h1>
-        <p>Schedule your Visit and get the best grooming experience</p>
-        <img src="images/barbe9.jpg" alt="Barber Image" width="20%">
+    <h1>Book Appointment</h1>
+    <p>Schedule your visit and get the best grooming experience</p>
 
-    <!-- BOOKING FORM -->
-     <h2>Fill the Form Below</h2>
-     <form action="https://formspree.io/f/xzdyvpqq" method="POST" onsubmit="return handleSubmit(event)">
+    <img src="images/barbe9.jpg" alt="Barber Image" width="20%">
+
+    <!-- 📅 STEP 1: DATE FIRST -->
+    <h2>Select Appointment Date</h2>
+    <input type="date" id="datePicker" required>
+
+    <br><br>
+
+    <!-- 📝 BOOKING FORM -->
+    <form id="bookingForm" action="https://formspree.io/f/xzdyvpqq" method="POST">
+
+        <!-- ✅ CORRECT SUCCESS LINK -->
+        <input type="hidden" name="_next" value="https://egberongbemuiz05-design.github.io/barber-website01/success.html">
+
+        <!-- Hidden date value -->
+        <input type="hidden" name="date" id="selectedDate">
+
         <input type="text" name="name" placeholder="Full Name" required>
         <input type="tel" name="phone" placeholder="Phone Number" required>
 
-        <input type="date" name="date" required>
         <input type="time" name="time" required>
 
         <select name="service" required>
@@ -31,42 +56,60 @@
         </select>
 
         <button type="submit">Confirm Booking</button>
-     </form>
+    </form>
 
-     <br>
+    <!-- ✅ SUCCESS MESSAGE -->
+    <div class="success-message" id="successMsg">
+        <h2>✅ Appointment Confirmed</h2>
+        <p id="confirmText"></p>
+    </div>
 
-     <!-- EXTRA INFO -->
-      <p>we will contact you to confirm your appointment</p>
+    <br>
 
-      <!-- WHATSAPP -->
-      <a href="https://wa.me/2348143638666" class="whatsapp" target="_blank">      
+    <p>We will contact you to confirm your appointment</p>
+
+    <!-- WHATSAPP -->
+    <a href="https://wa.me/2348143638666" class="whatsapp" target="_blank">
         Chat on WhatsApp
-      </a>
+    </a>
+
     <br><br>
 
-           <!-- BACK BUTTON -->
-       <a href="index.html" class="btn">Back to Home</a>
-    </section>
+    <!-- BACK BUTTON -->
+    <a href="index.html" class="btn">Back to Home</a>
 
-    <script>
-        function handleSubmit(event)  {
-            // event.preventDefault();
+</section>
 
-            let selectDate = document.querySelector("input[name='date']").value;
+<!-- 🔥 SCRIPT -->
+<script>
 
-            let today = new Date().toISOString().split("T")[0];
+    // SHOW FORM AFTER DATE SELECTION
+    document.getElementById("datePicker").addEventListener("change", function () {
 
-            if (selectedDate === today) {
-                alert("Today is fully booked. Please select another date (2-3 days ahead).");
-                return false;
-            }
+        let selectedDate = this.value;
+        let today = new Date().toISOString().split("T")[0];
 
-            alert("Thanks for booking with us! we will contact you shortly");
-            return true;
-            // event.target.submit();
+        if (selectedDate === today) {
+            alert("Today is fully booked. Please choose another date.");
+            this.value = "";
+            return;
         }
-     </script>      
 
-     
+        document.getElementById("bookingForm").style.display = "block";
+        document.getElementById("selectedDate").value = selectedDate;
+    });
+
+
+    // SHOW CONFIRMATION BEFORE SUBMIT
+    document.getElementById("bookingForm").addEventListener("submit", function (e) {
+
+        let date = document.getElementById("selectedDate").value;
+
+        alert("Your appointment is booked for: " + date);
+
+    });
+
+</script>
+
 </body>
 </html>
