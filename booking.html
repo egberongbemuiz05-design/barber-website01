@@ -26,18 +26,18 @@
     <br><br>
 
     <!-- BOOKING FORM -->
-    <form id="bookingForm" action="https://formspree.io/f/xzdyvpqq" method="POST">
+    <form id="bookingForm">
 
         <!-- SUCCESS REDIRECT -->
-        <input type="hidden" name="_next" value=https://egberongbemuiz05-design.github.io/barber-website01/success.html>
+        <input type="hidden" name="date" id="selectedDate">
 
         <!-- HIDDEN DATE -->
-        <input type="hidden" name="date" id="selectedDate">
+        <!-- <input type="hidden" name="date" id="selectedDate"> -->
 
         <input type="text" name="name" placeholder="Full Name" required>
         <input type="tel" name="phone" placeholder="Phone Number" required>
 
-        <input type="time" name="time" required>
+        <!-- <input type="time" name="time" required> -->
 
         <select name="service" required>
             <option value="">Select Service</option>
@@ -91,10 +91,28 @@ document.getElementById("datePicker").addEventListener("change", function () {
 });
 
 
-// HANDLE SUBMIT
-document.getElementById("bookingForm").addEventListener("submit", function () {
+// HANDLE SUBMIT WITH REDIRECT
+document.getElementById("bookingForm").addEventListener("submit", function (e) {
+    e.preventDefault();  //STOP default behavior
 
-    let date = document.getElementById("selectedDate").value;
+    let form = e.target;
+
+    // let date = document.getElementById("selectedDate").value;
+
+    fetch("https://formspree.io/f/xzdyvpqq", {
+        method:  "POST",
+        body:  new FormData(form),
+        headers:  {
+            'Accept':  'application/json'
+        } 
+    }).then(response  =>  {
+        if (response  .ok) {
+            //✅ REDIRECT MANUALLY
+            window.location.href ="success.html";
+        } else {
+            alert("something went wrong. Try again.");
+        }
+    })
 
     // Change button text
     document.getElementById("submitBtn").innerText = "Processing...";
