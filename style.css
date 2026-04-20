@@ -1,3 +1,4 @@
+/* GENERAL */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -10,9 +11,9 @@ body {
 .hero {
     position: relative;
     padding: 100px 20px;
-    height: 50vh;
+    height: 80vh;
     color: white;
-    
+
     background-size: cover;
     background-position: center;
 
@@ -41,14 +42,22 @@ body {
     animation: fadeIn 3s ease-in-out;
 }
 
-.btn {
+/* BUTTONS */
+button, .btn {
     display: inline-block;
-    margin-top: 20px;
+    margin-top: 15px;
     padding: 10px 20px;
     background: gold;
     color: black;
+    border: none;
     text-decoration: none;
-    animation: fadeIn 4s ease-in-out;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+button:hover, .btn:hover {
+    background: white;
 }
 
 /* SLIDING BACKGROUND */
@@ -86,12 +95,13 @@ body {
     color: black;
 }
 
-/* BOOKING */
-.booking{
+/* BOOKING SECTION */
+.booking {
     padding: 50px 20px;
     animation: fadeIn 2s ease-in-out;
 }
 
+/* FORM */
 form {
     display: flex;
     flex-direction: column;
@@ -106,29 +116,25 @@ input, select {
     border-radius: 5px;
 }
 
-button {
+input[type="date"],
+input[type="time"] {
     padding: 10px;
-    background: gold;
+    border-radius: 5px;
     border: none;
-    cursor: pointer;
-}
-
-button:hover {
-    background: white;
 }
 
 /* SERVICE PAGES */
-.service-page{
+.service-page {
     padding: 100px 20px;
     max-width: 600px;
     margin: auto;
     animation: fadeIn 1.5s ease-in-out;
-    }
+}
 
 .service-page h1 {
     font-size: 2.5em;
     margin-bottom: 10px;
-}    
+}
 
 .service-page h3 {
     color: gold;
@@ -140,16 +146,24 @@ button:hover {
     padding: 40px 20px;
 }
 
-/* WHATSAPP */
-.whatsapp{
+/* WHATSAPP BUTTON */
+.whatsapp {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: green;
+    background: #25D366;
     color: white;
-    padding: 10px 15px;
+    padding: 12px 18px;
     border-radius: 50px;
     text-decoration: none;
+    font-weight: bold;
+}
+
+/* FOOTER */
+footer {
+    padding: 20px;
+    background: #000;
+    margin-top: 20px;
 }
 
 /* FADE ANIMATION */
@@ -164,13 +178,34 @@ button:hover {
     }
 }
 
+/* 📱 MOBILE RESPONSIVE */
+@media (max-width: 768px) {
 
-input[type="date"],
-input[type="time"] {
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
+    .service-box {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero {
+        height: 70vh;
+    }
+
+    .hero h1 {
+        font-size: 2em;
+    }
+
+    form {
+        width: 90%;
+    }
 }
 
 
-        
+#bookingForm {
+    display: none;
+}
+
+.success-message {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+}
